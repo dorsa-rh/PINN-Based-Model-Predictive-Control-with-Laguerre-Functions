@@ -34,8 +34,6 @@ While the referenced project lays the groundwork for using PINNs in NMPC, our ap
 
 ## 📊 Results
 
-Through extensive simulations, we demonstrate that our enhanced **NMPC framework** achieves superior **trajectory tracking performance** for multi-link manipulators.  
-The integration of **Laguerre functions** and the **dynamic adjustment** of control parameters contribute to **reduced computational load** and **improved adherence to desired trajectories**.
 
 ### 🔹 Comparison of Different **Np** and **Nu** Configurations  
 _This section highlights the impact of different prediction and control horizons on system performance._
