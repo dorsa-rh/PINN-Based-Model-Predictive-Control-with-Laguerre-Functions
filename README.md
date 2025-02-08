@@ -38,6 +38,37 @@ While the referenced project lays the groundwork for using PINNs in NMPC, our ap
 
 ---
 
+
+## 📖 Laguerre Functions in Model Predictive Control
+
+To **reduce computational complexity** and **improve real-time performance**, we incorporate **Laguerre functions** in our Model Predictive Control (MPC) framework. This method allows us to approximate the control input, thereby **reducing the optimization problem's dimensionality** and enabling **faster execution**.
+
+Instead of optimizing the control input **directly**, we perform optimization on an intermediate variable **η**, and then reconstruct the control input using:
+
+\[
+\mathbf{u} = L^T \mathbf{\eta}
+\]
+
+where **L** represents the Laguerre basis functions. The structure of the **Laguerre matrix** and the basis function initialization can be seen below:
+
+\[
+A_l = \begin{bmatrix} 
+a & 0 & 0 & 0 & 0 \\ 
+\beta & a & 0 & 0 & 0 \\ 
+-a\beta & \beta & a & 0 & 0 \\ 
+a^2\beta & -a\beta & \beta & a & 0 \\ 
+-a^3\beta & a^2\beta & -a\beta & \beta & a 
+\end{bmatrix} 
+\quad ; \quad
+L(0) = \sqrt{\beta} \begin{bmatrix} 1 \\ -a \\ a^2 \\ -a^3 \\ a^4 \end{bmatrix}
+\]
+
+This transformation **reduces the number of optimization variables**, making computations significantly more efficient. However, since we **approximate** the control inputs rather than optimizing them explicitly at each step, we expect some degradation in performance.
+
+---
+
+
+
 ## 📊 Results
 
 This section presents the **performance of our PINN-based MPC framework** under various conditions. We analyze different **Np and Nu configurations**, explore the impact of **Laguerre functions**, and evaluate the controller's ability to handle disturbances.
