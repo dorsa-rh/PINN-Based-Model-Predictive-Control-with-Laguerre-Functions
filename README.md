@@ -51,17 +51,10 @@ Instead of optimizing the control input **directly**, we perform optimization on
 
 where **L** represents the Laguerre basis functions. The structure of the **Laguerre matrix** and the basis function initialization can be seen below:
 
-\[
-A_l = \begin{bmatrix} 
-a & 0 & 0 & 0 & 0 \\ 
-\beta & a & 0 & 0 & 0 \\ 
--a\beta & \beta & a & 0 & 0 \\ 
-a^2\beta & -a\beta & \beta & a & 0 \\ 
--a^3\beta & a^2\beta & -a\beta & \beta & a 
-\end{bmatrix} 
-\quad ; \quad
-L(0) = \sqrt{\beta} \begin{bmatrix} 1 \\ -a \\ a^2 \\ -a^3 \\ a^4 \end{bmatrix}
-\]
+🔹 **Laguerre Basis Function Representation**
+The following image shows the **Laguerre matrix structure** and the initialization of the **basis function**.
+
+![Laguerre Matrix Representation](images/laguerre_matrix.png)
 
 This transformation **reduces the number of optimization variables**, making computations significantly more efficient. However, since we **approximate** the control inputs rather than optimizing them explicitly at each step, we expect some degradation in performance.
 
