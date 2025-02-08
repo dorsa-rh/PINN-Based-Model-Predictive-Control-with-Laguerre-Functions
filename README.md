@@ -50,7 +50,32 @@ _Animated demonstration of the manipulator's response under the proposed control
 
 ![Simulation](path/to/simulation_gif.gif)
 
+
 ---
 
-## 📂 Repository Structure
+## 🔗 Reference Repository  
 
+For the original implementation of **PINNs-based MPC**, please check:  
+[Jonas-Nicodemus/PINNs-based-MPC](https://github.com/Jonas-Nicodemus/PINNs-based-MPC)
+
+---
+
+## 🛠️ How to Run the Code
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/your-repository.git
+   cd your-repository
+
+
+
+2. **Install dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   
+
+4. **Run the main script:**
+
+   ```bash
+   python main.py
