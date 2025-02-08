@@ -113,7 +113,7 @@ _This simulation was run with Np = 7, Nu = 5, and N_lag = 3._
 #### 🔹 **Simulation GIF**
 The following animation showcases the manipulator tracking this alternative reference trajectory.
 
-![Alternative Trajectory GIF](images/alternative_trajectory_simulation.mp4)
+![Alternative Trajectory GIF](images/alternative_trajectory_simulation.gif)
 
 ---
 
