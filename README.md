@@ -40,36 +40,75 @@ While the referenced project lays the groundwork for using PINNs in NMPC, our ap
 
 ## 📊 Results
 
-Through extensive simulations, we demonstrate that our enhanced **NMPC framework** achieves superior **trajectory tracking performance** for multi-link manipulators.  
-The integration of **Laguerre functions** and the **dynamic adjustment** of control parameters contribute to **reduced computational load** and **improved adherence to desired trajectories**.
+This section presents the **performance of our PINN-based MPC framework** under various conditions. We analyze different **Np and Nu configurations**, explore the impact of **Laguerre functions**, and evaluate the controller's ability to handle disturbances.
 
-### 🔹 Comparison of Different **Np** and **Nu** Configurations  
-_This section highlights the impact of different prediction and control horizons on system performance._
+### 1️⃣ Performance with Disturbance (Baseline)
+We first introduce a **disturbance to the states received from the plant** to create a more realistic simulation. The following results demonstrate the trajectory tracking performance under this disturbance.
 
-![Np and Nu Comparison](path/to/Np_Nu_comparison_image.png)
+![Baseline Results with Disturbance](images/baseline_disturbance.png)
 
-### 🔹 Path Following Results  
-_Illustrating the effectiveness of the proposed approach for various reference trajectories._
+#### 🔹 **Simulation GIF**
+The following animation visualizes the manipulator's behavior under the influence of the disturbance.
 
-![Path Following](path/to/path_following_results.png)
-
-### 🔹 Simulation with Disturbance  
-_Showcasing how the controller adapts to system uncertainties due to introduced disturbances._
-
-![Disturbance Simulation](path/to/disturbance_simulation.png)
-
-### 🔹 Simulation GIF  
-_Animated demonstration of the manipulator's response under the proposed control strategy._
-
-![Simulation](path/to/simulation_gif.gif)
-
+![Simulation GIF](images/simulation.gif)
 
 ---
 
-## 🔗 Reference Repository  
+### 2️⃣ Effect of Control and Prediction Horizons
+The performance of the MPC is affected by the choice of **control horizon (Nu) and prediction horizon (Np)**. Below are results for different settings:
 
-For the original implementation of **PINNs-based MPC**, please check:  
-[Jonas-Nicodemus/PINNs-based-MPC](https://github.com/Jonas-Nicodemus/PINNs-based-MPC)
+#### 🔹 **Np = 10, Nu = 3**
+![Results for Np = 10, Nu = 3](images/Np10_Nu3.png)
+
+#### 🔹 **Np = 10, Nu = 7**
+![Results for Np = 10, Nu = 7](images/Np10_Nu7.png)
+
+#### 🔹 **Np = 20, Nu = 5**
+![Results for Np = 20, Nu = 5](images/Np20_Nu5.png)
+
+---
+
+### 3️⃣ Incorporating Laguerre Functions
+The **Laguerre functions** help **reduce the dimensionality** of the control input parameterization by estimating it instead of computing it directly. Since this approach inherently involves approximation, we expect slightly worse results. However, as seen in the following figure, the performance remains **highly satisfactory**.
+
+#### 🔹 **Np = 20, Nu = 10, N_lag = 3 (Laguerre Pole = 0.9)**
+![Laguerre-based Results](images/Np20_Nu10_Nlag3.png)
+
+Despite the expected degradation, the controller **still achieves excellent trajectory tracking**.
+
+---
+
+### 4️⃣ Alternative Reference Trajectories
+We also tested the controller with a different reference trajectory to assess its generalization capability.
+
+#### 🔹 **Results for Alternative Reference Trajectory**
+_This simulation was run with Np = 7, Nu = 5, and N_lag = 3._
+
+![Alternative Trajectory Results](images/alternative_trajectory.png)
+
+#### 🔹 **Simulation GIF**
+The following animation showcases the manipulator tracking this alternative reference trajectory.
+
+![Alternative Trajectory GIF](images/alternative_trajectory_simulation.gif)
+
+---
+
+## 📚 References
+
+1. **Physics-Informed Neural Nets for Control of Dynamical Systems**  
+   _Eric Aislan Antonelo, Eduardo Camponogara_
+2. **Physics-informed Neural Networks-based Model Predictive Control for Multi-link Manipulators**  
+   _Jonas Nicodemus, Jonas Kneifl, Jörg Fehr, Benjamin Unger_
+3. **Physics-informed Machine Learning**  
+   _Karniadakis, G.E., Kevrekidis_ (Nature Reviews Physics)
+4. **Modeling, Simulation, and Vision-/MPC-Based Control of a PowerCube Serial Robot**  
+   _Fehr, J., Schmid, P., Schneider, G., and Eberhard_
+5. **Automatic Differentiation in Machine Learning: A Survey**  
+   _Baydin, A.G., Pearlmutter, B.A., Radul, A.A., and Siskind_
+6. **State-Space Modeling for Control Based on Physics-Informed Neural Networks**  
+   _Arnold, F. and King, R._
+7. **Physics-Informed Neural Nets-Based Control**  
+   _Antonelo, E.A., Camponogara, E., Seman, L.O., de Souza, E.R., Jordanou, J.P., and Hubner_
 
 ---
 
