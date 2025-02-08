@@ -15,6 +15,9 @@ Building upon the foundational work detailed in [this repository](https://github
 - **State Constraints:**  
   Incorporation of **explicit state constraints** ensures the system operates within safe and feasible boundaries, enhancing the reliability of the control strategy.
 
+- **Realistic Disturbance Implementation:**  
+  To improve realism, we introduce **a disturbance to the states received from the plant**. This simulates real-world uncertainties, allowing the controller to adapt to variations in system dynamics.
+
 ---
 
 ## 🔍 Key Differences from the Referenced Project
@@ -30,10 +33,15 @@ While the referenced project lays the groundwork for using PINNs in NMPC, our ap
 3. **Enhanced Constraint Handling:**  
    Our controller explicitly incorporates **state constraints**, ensuring adherence to safety and operational limits, a feature not emphasized in the original implementation.
 
+4. **Disturbance Modeling in Simulation:**  
+   Unlike the referenced work, we introduce **stochastic noise (disturbance) in the plant model** to simulate real-world uncertainties. This is implemented by adding Gaussian noise to the plant state outputs.
+
 ---
 
 ## 📊 Results
 
+Through extensive simulations, we demonstrate that our enhanced **NMPC framework** achieves superior **trajectory tracking performance** for multi-link manipulators.  
+The integration of **Laguerre functions** and the **dynamic adjustment** of control parameters contribute to **reduced computational load** and **improved adherence to desired trajectories**.
 
 ### 🔹 Comparison of Different **Np** and **Nu** Configurations  
 _This section highlights the impact of different prediction and control horizons on system performance._
@@ -45,37 +53,17 @@ _Illustrating the effectiveness of the proposed approach for various reference t
 
 ![Path Following](path/to/path_following_results.png)
 
+### 🔹 Simulation with Disturbance  
+_Showcasing how the controller adapts to system uncertainties due to introduced disturbances._
+
+![Disturbance Simulation](path/to/disturbance_simulation.png)
+
 ### 🔹 Simulation GIF  
 _Animated demonstration of the manipulator's response under the proposed control strategy._
 
 ![Simulation](path/to/simulation_gif.gif)
 
-
 ---
 
-## 🔗 Reference Repository  
+## 📂 Repository Structure
 
-For the original implementation of **PINNs-based MPC**, please check:  
-[Jonas-Nicodemus/PINNs-based-MPC](https://github.com/Jonas-Nicodemus/PINNs-based-MPC)
-
----
-
-## 🛠️ How to Run the Code
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/your-repository.git
-   cd your-repository
-
-
-
-2. **Install dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   
-
-4. **Run the main script:**
-
-   ```bash
-   python main.py
